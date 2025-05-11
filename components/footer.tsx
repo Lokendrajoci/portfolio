@@ -7,7 +7,7 @@ export function Footer() {
       <div className="container flex flex-col md:flex-row justify-between items-center gap-4">
         <div className="text-center md:text-left">
           <p className="font-bold text-lg">
-            <span className="text-primary">Dev</span>Portfolio
+            <span className="text-primary">Lokendra </span>Portfolio
           </p>
           <p className="text-sm text-muted-foreground mt-1">
             © {new Date().getFullYear()} All Rights Reserved
