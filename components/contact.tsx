@@ -23,13 +23,38 @@ export function Contact() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    // In a real application, you would handle form submission here
-    console.log("Form submitted:", formData)
-    alert("Thank you for your message! I'll get back to you soon.")
-    setFormData({ name: "", email: "", subject: "", message: "" })
-  }
+ const api_key = process.env.NEXT_PUBLIC_REACT_APP_WEB3FORMS_ACCESS_KEY;
+
+  const handleSubmit = async (e: any) => {
+    e.preventDefault();
+    setStatus("Sending...");
+
+    try {
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+
+          access_key: api_key,
+        }),
+      });
+
+      const result = await res.json();
+
+      if (result.success) {
+        setStatus("Message sent successfully!");
+        setFormData({ name: "", email: "", subject: "", message: "" });
+      } else {
+        setStatus("Failed to send message. Please try again later.");
+      }
+    } catch (error) {
+      setStatus("Error: Something went wrong.");
+      console.error(error);
+    }
+  };
 
   return (
     <section id="contact" className="py-16 md:py-24">
@@ -66,7 +91,7 @@ export function Contact() {
               </div>
             </div>
           </div>
-          <Card>
+           <Card>
             <CardContent className="p-6">
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="space-y-2">
@@ -119,6 +144,7 @@ export function Contact() {
                   Send Message
                 </Button>
               </form>
+              {status && <p className="mt-4 text-center text-sm">{status}</p>}
             </CardContent>
           </Card>
         </div>
