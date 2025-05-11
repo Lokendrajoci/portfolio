@@ -27,7 +27,7 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
         <Link href="/" className="font-bold text-xl">
-          <span className="text-primary">Dev</span>Portfolio
+          <span className="text-primary">Lokendra</span>Portfolio
         </Link>
 
         {isMobile ? (
