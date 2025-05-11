@@ -54,15 +54,7 @@ export function Contact() {
                   <p className="text-muted-foreground">lokendrajoci@gmail.com</p>
                 </div>
               </div>
-              <div className="flex items-center gap-3">
-                <div className="bg-primary/10 p-3 rounded-full text-primary">
-                  <Phone className="h-5 w-5" />
-                </div>
-                <div>
-                  <p className="font-medium">Phone</p>
-                  <p className="text-muted-foreground">+977 9821684194</p>
-                </div>
-              </div>
+  
               <div className="flex items-center gap-3">
                 <div className="bg-primary/10 p-3 rounded-full text-primary">
                   <MapPin className="h-5 w-5" />
